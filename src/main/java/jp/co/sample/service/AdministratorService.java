@@ -18,7 +18,10 @@ public class AdministratorService {
 	@Autowired
 	private AdministratorRepository administratorRepository;
 	
-	
+	/**
+	 * AdministratorRepository クラスのinsertメソッドを呼び出すクラス
+	 * @param administrator
+	 */
 	public void insert(Administrator administrator) {
 		administratorRepository.insert(administrator);
 	}

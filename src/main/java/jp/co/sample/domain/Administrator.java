@@ -16,11 +16,11 @@ public class Administrator {
 		
 	}
 	
-	public Administrator(Integer id, String name, String mail_address, String password) {
+	public Administrator(Integer id, String name, String mailAddress, String password) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.mailAddress = mail_address;
+		this.mailAddress = mailAddress;
 		this.password = password;
 	}
 	public Integer getId() {
@@ -35,11 +35,11 @@ public class Administrator {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMail_address() {
+	public String getMailAddress() {
 		return mailAddress;
 	}
-	public void setMail_address(String mail_address) {
-		this.mailAddress = mail_address;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 	public String getPassword() {
 		return password;
@@ -49,7 +49,7 @@ public class Administrator {
 	}
 	@Override
 	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mail_address=" + mailAddress + ", password="
+		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password="
 				+ password + "]";
 	}
 	

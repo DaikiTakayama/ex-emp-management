@@ -24,7 +24,7 @@ public class AdministratorRepository {
 		Administrator administrator = new Administrator();
 		administrator.setId(rs.getInt("id"));
 		administrator.setName(rs.getString("name"));
-		administrator.setMail_address(rs.getString("mail_address"));
+		administrator.setMailAddress(rs.getString("mail_address"));
 		administrator.setPassword(rs.getString("password"));
 		return administrator;
 	};
@@ -39,7 +39,7 @@ public class AdministratorRepository {
 		SqlParameterSource parameter = new BeanPropertySqlParameterSource(administrator);
 		
 		String sql="insert into administrators(name,mail_address,password)"
-				+" values(:name,:mail_address,:password)";
+				+" values(:name,:mailAddress,:password)";
 		template.update(sql, parameter);
 		
 	}
