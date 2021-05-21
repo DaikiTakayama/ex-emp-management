@@ -17,7 +17,7 @@ import jp.co.sample.form.InsertAdministratorForm;
 public class AdministratorController {
 	/**
 	 * InsetAdministratorForm クラスをインスタンス化
-	 * @return
+	 * @return InsertAdministratorForm を新規にインスタンス化
 	 */
 	@ModelAttribute
 	public InsertAdministratorForm setUpInsertAdministratorForm() {
@@ -26,7 +26,7 @@ public class AdministratorController {
 	
 	/**
 	 * 「administrotor/insert.html」を表示
-	 * @return
+	 * @return administrator/insert.html へフォワード
 	 */
 	@RequestMapping("/toInsert")
 	public String toInsert() {
