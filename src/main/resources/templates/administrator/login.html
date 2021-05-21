@@ -30,13 +30,18 @@
 
 <!-- ここにモックのform要素を貼り付けます -->
 
-					<form method="post" action="../employee/list.html" th:action="@{/}" th:object="${loginForm}">
+					<form method="post" action="../employee/list.html" th:action="@{/login}" th:object="${loginForm}">
 						<fieldset>
 							<legend>ログイン</legend>
-							<div class="form-group">
-								<div class="alert alert-danger">
-			                        <p>メールアドレスまたはパスワードが間違っています</p>
+							<div class="form-group" >
+								<div class="alert alert-danger"  th:if="${loginResult eq true}">
+			                        <p th:text="" ></p>
 			                    </div>
+			                    
+			                    <div class="alert alert-danger"  th:if="${loginResult eq false}">
+			                        <p th:text="メールアドレスまたはパスワードが間違っています" ></p>
+			                    </div>
+			                    
 							</div>
 							<div class="form-group">
 								<label for="mailAddress">メールアドレス:</label>
@@ -47,7 +52,7 @@
 								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" th:field="*{password}">
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">ログイン</button>
+								<a href="" ><button type="submit" class="btn btn-primary" >ログイン</button></a>
 							</div>
 							<div class="form-group">
 								<a href="insert.html" th:href="@{/toInsert}">管理者登録はこちらから</a>

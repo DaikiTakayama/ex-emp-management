@@ -1,6 +1,7 @@
 package jp.co.sample.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -54,12 +55,18 @@ public class AdministratorRepository {
 	public Administrator findByMailAndPassword(String mailAddress,String password) {
 		System.out.println("--- findByMailAndPassword処理 ---");
 				
-		String sql="select * from administrators where mail_address=:mail_address and password=:password";
+		String sql="select * from administrators where mail_address=:mailAddress and password=:password";
 		
-		SqlParameterSource parameterSource = new MapSqlParameterSource().addValue("mail_address", mailAddress).addValue("password", password);
-		
-		Administrator administrator=template.queryForObject(sql,parameterSource,ADMINISTRATOR_ROW_MAPPAER);
-		return administrator;
+		SqlParameterSource parameterSource = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);
+		try {
+			Administrator administrator=template.queryForObject(sql,parameterSource,ADMINISTRATOR_ROW_MAPPAER);
+			return administrator;
+		}catch (IncorrectResultSizeDataAccessException e) {
+			System.out.println("実行結果は0行でした");
+			return null;
+		}
+
+
 	}
 	
 }

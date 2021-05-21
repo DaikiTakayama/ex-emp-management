@@ -8,9 +8,9 @@ import javax.validation.constraints.NotBlank;
  *
  */
 public class LoginForm {
-	@NotBlank
+	@NotBlank(message ="メールアドレスが入力されていません")
 	private String mailAddress;
-	@NotBlank
+	@NotBlank(message="パスワードが入力されていません")
 	private String password;
 	
 	public String getMailAddress() {

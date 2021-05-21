@@ -1,9 +1,6 @@
 package jp.co.sample.domain;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
-import org.apache.tomcat.jni.Local;
 
 /**
  * 従業員情報を表すドメインクラス
