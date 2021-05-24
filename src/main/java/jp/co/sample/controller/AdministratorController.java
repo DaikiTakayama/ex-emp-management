@@ -17,7 +17,7 @@ import jp.co.sample.form.LoginForm;
 import jp.co.sample.service.AdministratorService;
 
 /**
- * 管理者登録画面を表示する処理を行うクラス
+ * 管理者登録画面を表示する処理を行うクラス.
  * 
  * @author daiki.takayama
  *
@@ -26,9 +26,9 @@ import jp.co.sample.service.AdministratorService;
 @RequestMapping("/")
 public class AdministratorController {
 	/**
-	 * InsetAdministratorForm クラスをインスタンス化
+	 * InsetAdministratorForm クラスをインスタンス化.
 	 * 
-	 * @return InsertAdministratorForm を新規にインスタンス化
+	 * @return InsertAdministratorForm 管理者のフォームを呼び出す
 	 */
 	@ModelAttribute
 	public InsertAdministratorForm setUpInsertAdministratorForm() {
@@ -36,7 +36,7 @@ public class AdministratorController {
 	}
 
 	/**
-	 * LoginForm クラスをインスタンス化
+	 * LoginForm クラスをインスタンス化.
 	 * 
 	 * @return LoginForm クラスを新規にインスタンス化
 	 */
@@ -52,9 +52,9 @@ public class AdministratorController {
 	private HttpSession session;
 
 	/**
-	 * 「administrotor/insert.html」を表示
+	 *管理者登録画面を表示.
 	 * 
-	 * @return administrator/insert.html へフォワード
+	 * @return 管理者登録画面 へフォワード
 	 */
 	@RequestMapping("/toInsert")
 	public String toInsert() {
@@ -63,10 +63,10 @@ public class AdministratorController {
 	}
 
 	/**
-	 * 管理者情報を登録する。
+	 * 管理者情報を登録する.
 	 * 
-	 * @param insertAdministratorForm
-	 * @return "/"(ログイン画面)へredirect
+	 * @param insertAdministratorForm ログインフォームの入力値
+	 * @return コントローラークラスへリダイレクト
 	 */
 
 	@RequestMapping("/insert")
@@ -80,9 +80,9 @@ public class AdministratorController {
 	}
 
 	/**
-	 * 「administrator/login.html」 を表示
+	 * 従業員のログインフォームを表示.
 	 * 
-	 * @return administrator/login.html へフォワード
+	 * @return ログイン画面 へフォワード
 	 */
 	@RequestMapping("/")
 	public String toLogin() {
@@ -90,20 +90,18 @@ public class AdministratorController {
 	}
 
 	/**
-	 * ログインボタンを押した時のログイン処理を実行するメソッド
+	 * ログインボタンを押した時のログイン処理を実行する.
 	 * 
-	 * @param loginForm
-	 * @param result
-	 * @param model
+	 * @param loginForm ログインフォームの入力値
+	 * @param result エラーメッセージを格納するオブジェクト
+	 * @param model request スコープを使用するための準備
 	 * @return ログイン成功時：従業員一覧画面へ、ログイン失敗時：ログイン画面へ遷移
 	 * 
 	 */
 	@RequestMapping("/login")
 	public String login(@Validated LoginForm loginForm, BindingResult result, Model model) {
-
 		Administrator administrator = new Administrator();
-		administrator.setMailAddress(loginForm.getMailAddress());
-		administrator.setPassword(loginForm.getPassword());
+		BeanUtils.copyProperties(loginForm, administrator);
 		administrator = adminService.login(administrator.getMailAddress(), administrator.getPassword());
 
 		if (administrator != null) {

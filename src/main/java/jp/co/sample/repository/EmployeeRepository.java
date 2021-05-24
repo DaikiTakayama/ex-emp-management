@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.sample.domain.Employee;
 
 /**
- * employees テーブルを操作するリポジトリ
+ * employees テーブルを操作するリポジトリ.
  * @author daiki.takayama
  *
  */
@@ -26,8 +26,9 @@ public class EmployeeRepository {
 	private static final RowMapper<Employee> EMPLOYEE_ROW_MAPPER=new BeanPropertyRowMapper<>(Employee.class);
 	
 	/**
-	 * 従業員一覧情報を入社日順(降順)で取得する
-	 * @return empList
+	 * 従業員一覧情報を入社日順(降順)で取得する.
+	 * 
+	 * @return empList 取得した従業員リスト
 	 */
 	public List<Employee> findAll(){
 		String sql="select * from employees order by hire_date DESC";
@@ -37,9 +38,10 @@ public class EmployeeRepository {
 	}
 	
 	/**
-	 * 主キーから従業員情報を取得する
-	 * @param id 取得したい従業員のid
-	 * @return employee
+	 * 主キーから従業員情報を取得する.
+	 * 
+	 * @param id　取得したい従業員の主キー
+	 * @return employee 取得した従業員情報
 	 */
 	public Employee load(Integer id) {
 		Employee employee=new Employee();
@@ -50,8 +52,10 @@ public class EmployeeRepository {
 	}
 	
 	/**
-	 * 従業員情報を更新
-	 * @param employee
+	 * 従業員情報を更新.
+	 * 
+	 * @param employee 更新する従業員の参照オブジェクト
+	 * 
 	 */
 	public void update(Employee employee) {
 		SqlParameterSource parameterSource =new BeanPropertySqlParameterSource(employee);

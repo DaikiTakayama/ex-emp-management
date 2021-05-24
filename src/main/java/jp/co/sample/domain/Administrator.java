@@ -2,14 +2,18 @@ package jp.co.sample.domain;
 
 
 /**
- * 管理者情報を表すドメインクラス
+ * 管理者情報を表すドメインクラス.
  * @author daiki.takayama
  *
  */
 public class Administrator {
+	/** 管理者ID*/
 	private Integer id;
+	/** 管理者名*/
 	private String name;
+	/** 管理者メールアドレス*/
 	private String mailAddress;
+	/** 管理者パスワード*/
 	private String password;
 	
 	public Administrator() {
@@ -47,11 +51,8 @@ public class Administrator {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password="
-				+ password + "]";
-	}
+
+	
 	
 	
 }
