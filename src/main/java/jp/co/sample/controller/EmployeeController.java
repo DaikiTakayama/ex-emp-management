@@ -2,6 +2,7 @@ package jp.co.sample.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,8 +49,24 @@ public class EmployeeController {
 	public String showDetail(String id,Model model) {
 		int empId = Integer.parseInt(id);
 		Employee employee = empService.showDetail(empId);
+		
 		model.addAttribute("employee",employee);
 		return "employee/detail";
+	}
+	
+	/**
+	 * 従業員詳細を更新.
+	 * 
+	 * @param updateEmployeeForm リクエストパラメータの情報を格納するオブジェクト
+	 * @return showList メソッドへリダイレクト 
+	 * 
+	 */
+	@RequestMapping("/update")
+	public String update(UpdateEmployeeForm updateEmployeeForm) {
+		Employee employee =empService.showDetail(updateEmployeeForm.getId());
+		employee.setDependentsCount(Integer.parseInt(updateEmployeeForm.getDependentsCount()));
+		empService.update(employee);
+		return "redirect:/employee/showList";
 	}
 	
 	

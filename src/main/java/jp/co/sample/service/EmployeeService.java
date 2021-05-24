@@ -44,4 +44,13 @@ public class EmployeeService {
 		return employee;
 		
 	}
+	
+	/**
+	 * 従業員詳細の扶養人数を更新.
+	 * @param employee 従業員詳細画面で表示している従業員オブジェクト
+	 */
+	public void update(Employee employee) {
+		repository.update(employee);
+		
+	}
 }
